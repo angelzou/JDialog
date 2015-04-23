@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/ui-jdiablog.min.css" />
+	</head>
+	<body>
+		<input type="button" name="c-btn" id="c-btn" value="点我弹出对话框" />
+		<script src="lib/require.js"></script>
+		<script type="text/javascript">
+			require.config({
+				paths: {
+					jquery: './src/global_modules/jquery.min',
+					jqueryUI: './src/global_modules/jquery-ui.min',
+					jdialog: './src/jdialog.min'
+				}
+			});
+			require(["jquery", "jqueryUI", "jdialog"], function($, $ui, dialog){
+				var jdialog = new dialog({
+					//title: "系统提示",
+					content: "嘎嘎，这是测试内容哈哈哈",
+					//content: '<input type="text" value="just a test for jdialog" />'//,
+					//skin: "black",
+					ok: function(){
+						var that = this;
+						that.setTitle("提交中...");
+						setTimeout(function () {
+				            that.removeWrap();
+				        }, 2000);
+						return false;
+					},
+					okVal: "确认",
+					cacel: function(){
+						var that = this;
+						that.setTitle("关闭对话框中...");
+						setTimeout(function () {
+				            that.removeWrap();
+				        }, 2000);
+						return false;
+					},
+					cacelVal: "取消",
+					/*close: function(){
+						var that = this;
+						that.setTitle("关闭对话框中...");
+						alert("关闭对话框");
+						return false;
+					},*/
+					isModal: true
+				});
+				$("#c-btn").click(function(){
+					jdialog.show();
+				});
+				
+			});
+		</script>
+	</body>
+</html>
