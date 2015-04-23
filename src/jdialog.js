@@ -1,3 +1,8 @@
+/**
+ * @author angelzou
+ * @time 2015-04-23
+ * @email yuweizou.cn@gmail.com
+ */
 define(['jquery', 'jqueryUI', 'jdialog'], function($, $UI, dialog){
 	function JDialog(config) {
 		this.config = $.extend({
